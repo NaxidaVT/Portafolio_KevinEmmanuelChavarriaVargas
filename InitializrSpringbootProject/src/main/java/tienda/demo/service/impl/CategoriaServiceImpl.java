@@ -1,7 +1,7 @@
 package tienda.demo.service.impl;
 
 import tienda.demo.dao.CategoriaDao;
-import tienda.demo.domain.categoria;
+import tienda.demo.domain.Categoria;
 import tienda.demo.service.categoriaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ public class CategoriaServiceImpl implements categoriaService {
     
     @Transactional(readOnly=true)
     @Override
-    public List<categoria> getCategorias(boolean activos) {
+    public List<Categoria> getCategorias(boolean activos) {
         var lista=categoriaDao.findAll();
         if (activos) {
            lista.removeIf(e -> !e.isActivo());
@@ -25,19 +25,19 @@ public class CategoriaServiceImpl implements categoriaService {
 
      @Override
     @Transactional(readOnly = true)
-    public categoria getCategoria(categoria categoria) {
+    public Categoria getCategoria(Categoria categoria) {
         return categoriaDao.findById(categoria.getIdCategoria()).orElse(null);
     }
 
     @Override
     @Transactional
-    public void save(categoria categoria) {
+    public void save(Categoria categoria) {
         categoriaDao.save(categoria);
     }
 
     @Override
     @Transactional
-    public void delete(categoria categoria) {
+    public void delete(Categoria categoria) {
         categoriaDao.delete(categoria);
     }
 }
