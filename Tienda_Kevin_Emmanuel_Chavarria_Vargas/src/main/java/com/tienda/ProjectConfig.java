@@ -65,20 +65,21 @@ public class ProjectConfig implements WebMvcConfigurer{
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((request) -> request
-                .requestMatchers("/","/index","/errores/**",
-                        "/carrito/**","/pruebas/**","/reportes/**",
-                        "/registro/**","/js/**","/webjars/**")
+                .requestMatchers("/", "/index", "/errores/**",
+                        "/carrito/**", "/pruebas/**", "/reportes/**",
+                        "/registro/**", "/js/**", "/webjars/**")
                         .permitAll()
                 .requestMatchers(
-                        "/producto/nuevo","/producto/guardar",
-                        "/producto/modificar/**","/producto/eliminar/**",
-                        "/categoria/nuevo","/categoria/guardar",
-                        "/categoria/modificar/**","/categoria/eliminar/**",
-                        "/usuario/nuevo","/usuario/guardar",
-                        "/usuario/modificar/**","/usuario/eliminar/**",
-                        "/reportes/**"
+                        "/producto/nuevo", "/producto/guardar",
+                        "/producto/modificar/**", "/producto/eliminar/**",
+                        "/categoria/nuevo", "/categoria/guardar",
+                        "/categoria/modificar/**", "/categoria/eliminar/**",
+                        "/usuario/nuevo", "/usuario/guardar",
+                        "/usuario/modificar/**", "/usuario/eliminar/**",
+                        "/reportes/**", "/continue/**"
                 ).hasRole("ADMIN")
                 .requestMatchers(
+                        "/producto/listado/continue",
                         "/producto/listado",
                         "/categoria/listado",
                         "/usuario/listado"
